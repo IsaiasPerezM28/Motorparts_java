@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Panel Administrador - MotorParts</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+        <style>
+            .admin-header {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                padding: 30px 0;
+                margin-bottom: 30px;
+            }
+            .card-feature {
+                transition: transform 0.3s;
+                border: none;
+                box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+                height: 100%;
+            }
+            .card-feature:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            }
+            .card-feature i {
+                font-size: 3rem;
+                margin-bottom: 15px;
+            }
+        </style>
+    </h:head>
+    <h:body>
+        <f:event type="preRenderView" listener="#{loginBean.verif_sesion('A')}" />
+        
+        <!-- Header -->
+        <div class="admin-header">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-8">
+                        <h1 class="mb-0"><i class="fas fa-user-shield"></i> Panel de Administración</h1>
+                        <p class="mb-0">Bienvenido, #{loginBean.nombreUsuario}</p>
+                    </div>
+                    <div class="col-md-4 text-end">
+                        <h:form>
+                            <h:commandButton value="Cerrar Sesión" 
+                                           actionListener="#{loginBean.cerrar_sesion()}"
+                                           styleClass="btn btn-light"/>
+                        </h:form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card card-feature text-center">
+                        <div class="card-body p-5">
+                            <i class="fas fa-cubes text-primary"></i>
+                            <h3 class="card-title">Productos</h3>
+                            <p class="card-text">Administra el catálogo de productos, precios, existencias y proveedores</p>
+                            <h:form>
+                                <h:commandButton value="Administrar Productos" 
+                                               action="/faces/producto/index"
+                                               styleClass="btn btn-primary"/>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card card-feature text-center">
+                        <div class="card-body p-5">
+                            <i class="fas fa-users-cog text-success"></i>
+                            <h3 class="card-title">Usuarios</h3>
+                            <p class="card-text">Gestiona usuarios, roles y permisos del sistema</p>
+                            <h:form>
+                                <h:commandButton value="Administrar Usuarios" 
+                                               action="/faces/usuarios/index"
+                                               styleClass="btn btn-success"/>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card card-feature text-center">
+                        <div class="card-body p-5">
+                            <i class="fas fa-truck text-danger"></i>
+                            <h3 class="card-title">Proveedores</h3>
+                            <p class="card-text">Administra la información de proveedores, NIT, contactos y datos de contacto</p>
+                            <h:form>
+                                <h:commandButton value="Administrar Proveedores" 
+                                               action="/faces/proveedor/index"
+                                               styleClass="btn btn-danger"/>
+                            </h:form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </h:body>
+</html>
